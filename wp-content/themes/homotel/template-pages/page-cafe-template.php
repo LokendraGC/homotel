@@ -12,44 +12,47 @@ get_header();
 		<div class="container">
 			<div class="row g-4 align-items-center">
 				<div class="col-lg-6">
-					<h2 class="wow fadeInUp">Our Café</h2>
 
-					<div class="spacer-half"></div>
+					<?php
+					$content = get_the_content();
 
-					<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
-					<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>
-					<div class=" bottom-0 mb-4" style="background-size: cover; background-repeat: no-repeat;">
-						<ul class="foodlist wow fadeInUp animated" data-wow-delay=".8s" style="background-size: cover; background-repeat: no-repeat; visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
-							<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/bibimbap.png"  alt=""></li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/cake.png"  alt=""></li>
-
-							<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/dinner.png"  alt=""></li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/fast-food.png"  alt=""></li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/bibimbap.png"  alt=""></li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/cake.png"  alt=""></li>
-
-							<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/dinner.png"  alt=""></li>
-							<li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/fast-food.png"  alt=""></li>
-						</ul>
+					if( !empty($content) ){
+						echo $content; 
+					}
+					?>
+					<div class="bottom-0 mb-4" style="background-size: cover; background-repeat: no-repeat;">
+						<?php if( $gallery_cafe = get_field('related_icons') ): ?>
+							<ul class="foodlist wow fadeInUp animated" data-wow-delay=".8s" style="background-size: cover; background-repeat: no-repeat; visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
+								<?php foreach( $gallery_cafe as $cafe_icon ): ?>
+									<li><img src="<?php echo $cafe_icon['url']; ?>" alt="<?php echo $cafe_icon['alt']; ?>"></li>
+								<?php endforeach; // Corrected from enforeach ?>
+							</ul>
+						<?php endif; ?>
 					</div>
+
 				</div>
 
 				<div class="col-lg-6">
 					<div class="relative">
 						<div class="row g-3 align-items-center">
+							<?php if( $first_img = get_field('hom_first_feature_image') ):?>
 							<div class="col-6 wow fadeInUp" data-wow-delay=".2s">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cafe.jpg" class="img-fluid" alt="">
+								<img src="<?php echo $first_img['url']; ?>" class="img-fluid" alt="Cafe Image">
 							</div>
-							<div class="col-6 wow fadeInUp" data-wow-delay=".4s">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/cafe-1.jpg" class="img-fluid" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
+						<?php endif; ?>
 
+						<?php if( $second_img = get_field('hom_second_feature_image') ):?>
+						<div class="col-6 wow fadeInUp" data-wow-delay=".4s">
+							<img src="<?php echo $second_img['url']; ?>" class="img-fluid" alt="Coffee Image">
+						</div>
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
-	</section>
+
+	</div>
+</div>
+</section>
 
 
 </div>
