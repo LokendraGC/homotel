@@ -29,7 +29,6 @@ get_header();
 	</section>
 
 	<?php 
-
 	$content = get_the_content();
 	?>
 	<section class="lines-deco">
