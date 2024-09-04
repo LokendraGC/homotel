@@ -6,7 +6,7 @@ get_header();
 <!-- content begin -->
 <div class="no-bottom no-top" id="content">
 
-<?php get_template_part('template-parts/common/banner-section'); ?>
+<?php get_template_part('template-parts/common/banner-detail-section'); ?>
 
 	<section class="lines-deco">
 		<div class="container">

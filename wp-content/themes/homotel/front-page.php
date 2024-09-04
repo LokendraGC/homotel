@@ -43,7 +43,7 @@ get_header();
                                                     <p class="slider-teaser mb-0"><?php echo $slider_description; ?></p>
                                                     <div class="spacer-30"></div>
                                                 <?php endif; ?>
-                                                <a class="btn-main mb10 mb-3" href="<?php echo site_url('room'); ?>">View More</a>
+                                                <a class="btn-main mb10 mb-3" href="<?php echo get_the_permalink(26); ?>">View More</a>
                                             </div>
 
                                             <div class="spacer-single"></div>
@@ -164,7 +164,7 @@ if(!empty($content) ):
                    </ul>
                </div>
            <?php endif; ?>
-           <a class="btn-main mb10 mb-3" href="<?php echo site_url('room'); ?>">View Menu</a>
+           <a class="btn-main mb10 mb-3" href="<?php echo get_the_permalink(26); ?>">View Menu</a>
        </div>
 
        <div class="col-lg-6">

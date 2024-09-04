@@ -4,13 +4,10 @@ get_header();
 
 <!-- content begin -->
 <div class="no-bottom no-top" id="content">
-
 	<?php get_template_part('template-parts/common/banner-section'); ?>
 
+
 	<?php 
-	
-	
-	
 	$capacity = get_field('room_capacity');
 	?>
 	<section class="relative z-4 lines-deco no-top no-bottom">

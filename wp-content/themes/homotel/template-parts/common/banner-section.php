@@ -5,11 +5,13 @@
 		<div class="container relative z-index-1000">
 			<div class="row justify-content-center">
 				<div class="col-lg-12 text-center">
-					<h1>Himcha Cafe</h1>
+					<h1><?php the_title(); ?></h1>
+					<!-- 
 					<ul class="crumb">
 						<li><a href="index.html">Home</a></li>
 						<li class="active">Himcha Cafe</li>
-					</ul>
+					</ul> -->
+					<?php echo homotel_breadcrumb(); ?>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 <?php
-    if ( ! function_exists( 'raithaane_breadcrumb' ) ) {
-        function raithaane_breadcrumb ( $list_style = 'ul', $list_id = '', $list_class = 'breadcrumb', $active_class = '', $echo = false ) {
+    if ( ! function_exists( 'homotel_breadcrumb' ) ) {
+        function homotel_breadcrumb ( $list_style = 'ul', $list_id = '', $list_class = 'crumb', $active_class = '', $echo = false ) {
             // Get text domain for translations
             $theme = wp_get_theme();
             $text_domain =  $theme->get( '' );
@@ -57,7 +57,7 @@
                 $post_cats = get_the_category();
 
                 if ( $post_cats[0] ) {
-                    $breadcrumb .= '<li><a href="' . get_the_permalink(25) . '">Blog</a></li>';
+                    $breadcrumb .= '<li><a href="' . get_the_permalink(18) . '">Blog</a></li>';
                 }
 
                 // Post title
@@ -216,10 +216,10 @@
                 }
 
                 // Cpt title
-                if( $cpt_obj->label == 'Products' ){
+                if( $cpt_obj->label == 'Rooms' ){
                     $id = get_the_ID();
-                    $terms = get_the_terms( $id, 'product_cat' );
-                    $breadcrumb .= '<li><a href="'.get_term_link( $terms[0] ).'">'. $terms[0]->name. '</a></li>';
+
+                    $breadcrumb .= '<li><a href="'.get_the_permalink(26).'">Rooms</a></li>';
                 }
 
                 // $breadcrumb .= '<li>' . $cpt_obj->label . '</li>';
