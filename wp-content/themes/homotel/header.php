@@ -34,13 +34,28 @@
 						<div class="de-flex sm-pt10">
 							<div class="de-flex-col">
 								<!-- logo begin -->
+								<?php 
+
+								 $logo = get_field('wtn_header_logo','options');
+
+										if( $logo ){
+											$homo_logo = $logo['url'];
+										}else{
+											$homo_logo = get_template_directory_uri() ."/assets/images/hm-logo.svg";
+										}
+
+										if( $homo_logo ):
+								 ?>
 								<div id="logo">
-									<a href="index.html">
-										<img class="logo-main" src="<?php echo get_template_directory_uri(); ?>/assets/images/hm-logo.svg" alt="" >
-										<img class="logo-scroll" src="<?php echo get_template_directory_uri(); ?>/assets/images/hm-logo.svg" alt="" >
-										<img class="logo-mobile" src="<?php echo get_template_directory_uri(); ?>/assets/images/hm-logo.svg" alt="" >
+									<a href="<?php echo site_url('/'); ?>">
+										<img class="logo-main" src="<?php echo 
+										$homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
+
+										<img class="logo-scroll" src="<?php echo $homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
+										<img class="logo-mobile" src="<?php echo $homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
 									</a>
 								</div>
+							<?php endif; ?>
 								<!-- logo close -->
 							</div>
 							<div class="de-flex-col header-col-mid">
@@ -68,12 +83,14 @@
 									<li><a class="menu-item" href="contact.html">Contact</a></li>
 								</ul>
 							</div>
+							<?php if( $res_link = get_field('se_inquire_button','options') ): ?>
 							<div class="de-flex-col">
 								<div class="menu_side_area">          
-									<a href="reservation.html" class="btn-main btn-line">Reservation</a>
+									<a href="<?php echo $res_link['url']; ?>" class="btn-main btn-line"><?php echo $res_link['title']; ?></a>
 									<span id="menu-btn"></span>
 								</div>
 							</div>
+						<?php endif; ?>
 						</div>
 					</div>
 				</div>
