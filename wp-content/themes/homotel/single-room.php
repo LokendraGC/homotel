@@ -53,7 +53,8 @@ get_header();
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-7 text-center">
-						<?php the_content(); ?>
+						<h2 class="wow fadeInUp animated animated animated" style="visibility: visible; animation-name: fadeInUp;"><?php the_content(); ?></h2>
+						
 					</div>
 				</div>
 			</div>
@@ -192,8 +193,8 @@ get_header();
 		</section>
 	<?php endif; ?>
 
-	</div>
-	<!-- content close -->
+</div>
+<!-- content close -->
 
-	<?php 
-	get_footer();
+<?php 
+get_footer();

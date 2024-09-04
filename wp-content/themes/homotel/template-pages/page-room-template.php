@@ -6,147 +6,75 @@ get_header();
 <!-- content begin -->
 <div class="no-bottom no-top" id="content">
 
-<?php get_template_part('template-parts/common/banner-section'); ?>
+	<?php get_template_part('template-parts/common/banner-section'); ?>
+	
+	<?php 
+	$unique_ID = get_the_ID();
+	$rooms_args = array(
+		'post_type'         => 'room',
+		'posts_per_page'    => -1,
+		'post_status'       => 'publish',
+		'post__not_in' 		=> array($unique_ID)
+	);
 
-	<section class=" no-top no-bottom overflow-hidden">
-		<div class="container-fluid position-relative half-fluid">
-			<div class="container">
-				<div class="row">
-					<!-- Image -->
-					<div class="col-lg-6 position-lg-absolute right-half h-100">
-						<div class="image" data-bgimage="url(<?php echo get_template_directory_uri(); ?>/assets/images/room/1.webp) center"></div>
-					</div>
-					<!-- Text -->
-					<div class="col-lg-6 py-5 pe-lg-5">
+	if( $room_datas = get_posts( $rooms_args )):   
 
-						<h3>Standart Room</h3>
-						<div class="fs-14 mb-3">
-							<span class="me-4">
-								2 Guests
-							</span>
+		$count = 1;
+		foreach( $room_datas as $post ):
+			setup_postdata( $post );
+			$price = get_field('room_price',$post->ID);
+			$guest = get_field('room_capacity',$post->ID);
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
+			if( $count % 2 == 1 ){
 
-						</div>
-						<p class="pe-lg-5">Immerse yourself in the epitome of luxury at Almaris, your premier destination in New York. Our hotel redefines elegance and comfort, offering an exquisite escape for discerning travelers.</p>
-						<a class="btn-main mt-2" href="room-single.html">View Details</a>
+				$custom_class = '';
+				$text_class = 'col-lg-6 py-5 pe-lg-5';
+				$left_right = 'right-half';
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+			}else{
 
-	<section class="bg-dark text-light no-top no-bottom overflow-hidden">
-		<div class="container-fluid position-relative half-fluid">
-			<div class="container">
-				<div class="row">
-					<!-- Image -->
-					<div class="col-lg-6 position-lg-absolute left-half h-100">
-						<div class="image" data-bgimage="url(<?php echo get_template_directory_uri(); ?>/assets/images/room/2.webp) center"></div>
-					</div>
-					<!-- Text -->
-					<div class="col-lg-6 offset-lg-6 py-5 ps-lg-5">
+				$custom_class = 'bg-dark text-light';
+				$text_class = 'col-lg-6 offset-lg-6 py-5 ps-lg-5';
+				$left_right = 'left-half';
+			}
+			?>
+			<section class="<?php echo $custom_class; ?> no-top no-bottom overflow-hidden">
+				<div class="container-fluid position-relative half-fluid">
+					<div class="container">
+						<div class="row">
 
-						<h3>Deluxe Room</h3>
-						<div class="fs-14 mb-3">
-							<span class="me-4">
-								2 Guests
-							</span>
+							<!-- Image -->
+							<div class="col-lg-6 position-lg-absolute <?php echo $left_right; ?> h-100">
+								<div class="image" data-bgimage="url(<?php echo $image[0]; ?>) center"></div>
+							</div>
 
-						</div>
-						<p class="pe-lg-5">Immerse yourself in the epitome of luxury at Almaris, your premier destination in New York. Our hotel redefines elegance and comfort, offering an exquisite escape for discerning travelers.</p>
-						<a class="btn-main mt-2" href="room-single.html">View Details</a>
+							<!-- Text -->
+							<div class="<?php echo $text_class; ?>">
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+								<h3><?php echo $post->post_title; ?></h3>
+								<div class="fs-14 mb-3">
+									<?php if( $guest ): ?>
+										<span class="me-4">
+											<?php echo $guest; ?>
+										</span>
+									<?php endif; ?>
 
-	<section class=" no-top no-bottom overflow-hidden">
-		<div class="container-fluid position-relative half-fluid">
-			<div class="container">
-				<div class="row">
-					<!-- Image -->
-					<div class="col-lg-6 position-lg-absolute right-half h-100">
-						<div class="image" data-bgimage="url(<?php echo get_template_directory_uri(); ?>/assets/images/room/3.webp) center"></div>
-					</div>
-					<!-- Text -->
-					<div class="col-lg-6 py-5 pe-lg-5">
+								</div>
+								<p class="pe-lg-5"><?php echo $post->post_content; ?></p>
+								<a class="btn-main mt-2" href="<?php echo get_the_permalink( $post->ID ); ?>">View Details</a>
 
-						<h3>Deluxe Room</h3>
-						<div class="fs-14 mb-3">
-							<span class="me-4">
-								2 Guests
-							</span>
+							</div>
 
 						</div>
-						<p class="pe-lg-5">Immerse yourself in the epitome of luxury at Almaris, your premier destination in New York. Our hotel redefines elegance and comfort, offering an exquisite escape for discerning travelers.</p>
-						<a class="btn-main mt-2" href="room-single.html">View Details</a>
-
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="bg-dark text-light no-top no-bottom overflow-hidden">
-		<div class="container-fluid position-relative half-fluid">
-			<div class="container">
-				<div class="row">
-					<!-- Image -->
-					<div class="col-lg-6 position-lg-absolute left-half h-100">
-						<div class="image" data-bgimage="url(<?php echo get_template_directory_uri(); ?>/assets/images/room/4.webp) center"></div>
-					</div>
-					<!-- Text -->
-					<div class="col-lg-6 offset-lg-6 py-5 ps-lg-5">
-
-						<h3>Family Room</h3>
-						<div class="fs-14 mb-3">
-							<span class="me-4">
-								4 Guests
-							</span>
-							<span class="me-4">
-								60 ft
-							</span>
-						</div>
-						<p class="pe-lg-5">Immerse yourself in the epitome of luxury at Almaris, your premier destination in New York. Our hotel redefines elegance and comfort, offering an exquisite escape for discerning travelers.</p>
-						<a class="btn-main mt-2" href="room-single.html">View Details</a>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="no-top no-bottom overflow-hidden">
-		<div class="container-fluid position-relative half-fluid">
-			<div class="container">
-				<div class="row">
-					<!-- Image -->
-					<div class="col-lg-6 position-lg-absolute right-half h-100">
-						<div class="image" data-bgimage="url(<?php echo get_template_directory_uri(); ?>/assets/images/room/5.webp) center"></div>
-					</div>
-					<!-- Text -->
-					<div class="col-lg-6 py-5 pe-lg-5">
-
-						<h3>Luxury Room</h3>
-						<div class="fs-14 mb-3">
-							<span class="me-4">
-								4 Guests
-							</span>
-							<span class="me-4">
-								60 ft
-							</span>
-						</div>
-						<p class="pe-lg-5">Immerse yourself in the epitome of luxury at Almaris, your premier destination in New York. Our hotel redefines elegance and comfort, offering an exquisite escape for discerning travelers.</p>
-						<a class="btn-main mt-2" href="room-single.html">View Details</a>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
+			</section>
+			<?php 
+			$count++;
+		endforeach;
+		wp_reset_postdata();
+	endif;
+	?>
 
 </div>
 <!-- content close -->

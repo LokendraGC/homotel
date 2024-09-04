@@ -15,42 +15,62 @@ get_header();
 					<div class="content-contact">
 						<h2>Contact Information</h2>
 						<ul>
-							<li class="">
-								<div class="">
-									<h3>Address</h3>
-								</div>   
-								<div class="">
-									<a href="">Kathmandu Nepal</a>
-								</div>
-							</li>
-							<li class="">
-								<div class="">
-									<h3>Phone</h3>
-								</div>   
-								<div class="">
-									<a href="">+9779704141584</a>
-								</div>
-							</li>
-							<li class="">
-								<div class="">
-									<h3>Email</h3>
-								</div>   
-								<div class="">
-									<a href="">info@homotel.com.np</a>
-								</div>
-							</li>
-							<li class="">
-								<div style="background-size: cover; background-repeat: no-repeat;">
-									<h3 class="fs-20">Connect With Us</h3>
-									<div class="social-icons mb-sm-30" style="background-size: cover; background-repeat: no-repeat;">
-										<a href="https://www.facebook.com/ApartmentHotels/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-										<a href="#"><i class="fa-brands fa-instagram"></i></a>
-										<a href="#"><i class="fa-brands fa-twitter"></i></a>
-										<a href="#"><i class="fa-brands fa-youtube"></i></a>
+							<?php if( $address = get_field('wtn_address','options') ): ?>
+								<li class="">
+									<div class="">
+										<h3>Address</h3>
+									</div>   
+									<div class="">
+										<a href=""><?php echo $address; ?></a>
 									</div>
+								</li>
+							<?php endif; ?>
+							<?php if( $phone = get_field('wtn_phone_number','options') ): ?>
+								<li class="">
+									<div class="">
+										<h3>Phone</h3>
+									</div>   
+									<div class="">
+										<a href="tel:<?php echo $phone; ?>"><?php echo $phone; ?></a>
+									</div>
+								</li>
+							<?php endif; ?>
+							<?php if( $email = get_field('wtn_email_address','options') ): ?>
+								<li class="">
+									<div class="">
+										<h3>Email</h3>
+									</div>   
+									<div class="">
+										<a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+									</div>
+								</li>
+							<?php endif; ?>
 
-								</div>
-							</li>
+							<?php if( have_rows('wtn_social_media','options') ): ?>
+								<li class="">
+									<div style="background-size: cover; background-repeat: no-repeat;">
+										<h3 class="fs-20">Connect With Us</h3>
+										<div class="social-icons mb-sm-30" style="background-size: cover; background-repeat: no-repeat;">
+											<?php while( have_rows('wtn_social_media','options') ):the_row();
+
+												$media_icon = get_sub_field('wtn_media','options');
+												$media_link = get_sub_field('wtn_link','options');
+												if( $media_link ){
+													$url = $media_link;
+													$target = '_blank';
+												}else{
+													$url = '#';
+													$target = '_self';
+												}
+												?>
+												<a href="<?php echo $url; ?>" target="<?php echo $target; ?>"><i class="fa-brands <?php echo $media_icon; ?>"></i></a>
+											<?php endwhile; ?>
+
+										</div>
+
+									</div>
+								</li>
+							<?php endif; ?>
 						</ul>
 					</div>
 				</div>
@@ -105,10 +125,12 @@ get_header();
 			</div>
 		</div>
 	</section>  
-	<section class="p-0">   
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.4743215329836!2d85.34861911044632!3d27.702637776085954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19efa0e3ecd1%3A0x90f007e066483426!2sHomotel%20International%20Pvt.%20Ltd.!5e0!3m2!1sen!2snp!4v1724750503740!5m2!1sen!2snp" width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-	</section>            
 
+	<?php if( $map_url = get_field('wtn_map_iframe_url','options') ): ?>
+	<section class="p-0">   
+		<?php echo $map_url; ?>
+	</section>            
+<?php endif; ?>
 </div>
 <!-- content close -->
 
