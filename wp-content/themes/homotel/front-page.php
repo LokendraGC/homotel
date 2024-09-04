@@ -76,15 +76,15 @@ get_header();
 <?php
 $content = get_the_content();
 if(!empty($content) ):
- ?>
- <section class="bg-light">
+   ?>
+   <section class="bg-light">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10">
-               <?php the_content(); ?>
-           </div>
-       </div>
-   </div>
+             <?php the_content(); ?>
+         </div>
+     </div>
+ </div>
 </section>
 <?php endif; ?>
 
@@ -98,13 +98,17 @@ if(!empty($content) ):
 
                 <!-- room begin -->
                 <?php
+                $count = 3;
                 foreach( $rooms as $room ):
                     $price = get_field('room_price',$room->ID);
                     $guest = get_field('room_capacity',$room->ID);
+                    $image = wp_get_attachment_image_src( get_post_thumbnail_id( $room->ID ), 'single-post-thumbnail' );
                     ?>
                     <div class="col-lg-3 col-sm-6">
-                        <div class="hover relative text-light text-center wow fadeInUp" data-wow-delay=".3s">
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images-mountain-hotel/room/1.webp" class="img-fluid" alt="">
+                        <div class="hover relative text-light text-center wow fadeInUp" data-wow-delay=".<?php echo $count; ?>s">
+                                <?php if( $image ): ?>
+                            <img src="<?php echo $image[0]; ?>" class="img-fluid" alt="<?php echo $room->post_title; ?>">
+                        <?php endif; ?>
                             <div class="abs hover-op-1 z-4 hover-mt-40 abs-centered w-100">
                                 <div class="fs-14">From</div>
                                 <h3 class="fs-40 lh-1 mb-4"><?php echo $price; ?></h3>
@@ -124,7 +128,10 @@ if(!empty($content) ):
                             <div class="gradient-trans-black-bottom abs w-100 h-40 bottom-0"></div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php 
+                $count++;
+            endforeach;
+         ?>
                 <!-- room end -->
 
             </div>
@@ -146,21 +153,21 @@ if(!empty($content) ):
                 endif;
                 if( $cafe_gallery = get_field('related_icons') ):
 
-                 ?>
-                 <div class=" bottom-0 mb-4" style="background-size: cover; background-repeat: no-repeat;">
+                   ?>
+                   <div class=" bottom-0 mb-4" style="background-size: cover; background-repeat: no-repeat;">
                     <ul class="foodlist wow fadeInUp animated" data-wow-delay=".8s" style="background-size: cover; background-repeat: no-repeat; visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
                         <?php
                         foreach( $cafe_gallery as $gallery ):
-                         ?>
-                         <li><img src="<?php echo $gallery['url']; ?>"  alt="<?php echo $gallery['alt']; ?>"></li>
-                     <?php endforeach; ?>
-                 </ul>
-             </div>
-         <?php endif; ?>
-         <a class="btn-main mb10 mb-3" href="<?php echo site_url('room'); ?>">View Menu</a>
-     </div>
+                           ?>
+                           <li><img src="<?php echo $gallery['url']; ?>"  alt="<?php echo $gallery['alt']; ?>"></li>
+                       <?php endforeach; ?>
+                   </ul>
+               </div>
+           <?php endif; ?>
+           <a class="btn-main mb10 mb-3" href="<?php echo site_url('room'); ?>">View Menu</a>
+       </div>
 
-     <div class="col-lg-6">
+       <div class="col-lg-6">
         <div class="relative">
             <div class="row g-3 align-items-center">
                 <?php if( $first_img = get_field('feature_image_one') ): ?>
@@ -170,8 +177,8 @@ if(!empty($content) ):
                     <?php 
                 endif;
                 if( $second_img = get_field('feature_image_two') ):
-                 ?>
-                 <div class="col-6 wow fadeInUp" data-wow-delay=".4s">
+                   ?>
+                   <div class="col-6 wow fadeInUp" data-wow-delay=".4s">
                     <img src="<?php echo $second_img['url']; ?>" class="img-fluid" alt="Testy Coffee">
                 </div>
             <?php endif; ?>
@@ -237,7 +244,7 @@ if(!empty($content) ):
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".<?php echo $count; ?>s">
                         <div class="relative p-4 bg-white border-grey">
                             <?php if( $icon ): ?>
-                               <span class="abs top-= w-70px p-3 rounded-up-100 bg-color d-block">
+                             <span class="abs top-= w-70px p-3 rounded-up-100 bg-color d-block">
                                 <img src="<?php echo $icon['url']; ?>" class="w-100" alt="Our Services">
                             </span>
                         <?php endif; ?>
@@ -332,8 +339,8 @@ if( $blogs_data->have_posts()):
                 <?php
                 while( $blogs_data->have_posts() ) :$blogs_data->the_post();
 
-                 ?>
-                 <div class="col-lg-4 col-md-6">
+                   ?>
+                   <div class="col-lg-4 col-md-6">
                     <div>
                         <?php if( has_post_thumbnail() ): ?>
                             <div class="post-image mb-3">
