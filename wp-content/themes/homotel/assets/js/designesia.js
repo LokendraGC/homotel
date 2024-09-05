@@ -1587,7 +1587,7 @@
         for (var n = 0; n <= room_count; n++) {
           $("#room-" + n).hide();
           $("#room-" + n).find("select").attr('id', 'room-type'+ n);
-          $("#room-" + n).find("select").attr('name', 'Room Type '+ n);
+          $("#room-" + n).find("select").attr('name', 'your_room[]');
           $("#room-" + n).find("select").attr('disabled',true);
           $("#room-" + n).find("h4").text("Select Room #" + n);
         }

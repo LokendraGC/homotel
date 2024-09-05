@@ -34,7 +34,7 @@ get_header();
 							<div class="col-md-6 col-12 text-center">
 								<div class="text-light p-4 h-100 wow fadeInRight" data-bgcolor="rgb(249 15 3)" data-wow-delay=".2s">
 									<div class="de_count fs-15 wow fadeInRight" data-wow-delay=".6s">
-										<a class="btn-main btn-line no-bg mt-lg-4 red-btn" href="<?php echo site_url('reservation'); ?>">Book This Room</a>
+										<a class="btn-main btn-line no-bg mt-lg-4 red-btn" href="<?php echo get_the_permalink(194); ?>">Book This Room</a>
 									</div>
 								</div>
 							</div>

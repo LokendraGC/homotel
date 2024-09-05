@@ -36,61 +36,49 @@
 								<!-- logo begin -->
 								<?php 
 
-								 $logo = get_field('wtn_header_logo','options');
+								$logo = get_field('wtn_header_logo','options');
 
-										if( $logo ){
-											$homo_logo = $logo['url'];
-										}else{
-											$homo_logo = get_template_directory_uri() ."/assets/images/hm-logo.svg";
-										}
+								if( $logo ){
+									$homo_logo = $logo['url'];
+								}else{
+									$homo_logo = get_template_directory_uri() ."/assets/images/hm-logo.svg";
+								}
 
-										if( $homo_logo ):
-								 ?>
-								<div id="logo">
-									<a href="<?php echo site_url('/'); ?>">
-										<img class="logo-main" src="<?php echo 
-										$homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
+								if( $homo_logo ):
+									?>
+									<div id="logo">
+										<a href="<?php echo site_url('/'); ?>">
+											<img class="logo-main" src="<?php echo 
+											$homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
 
-										<img class="logo-scroll" src="<?php echo $homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
-										<img class="logo-mobile" src="<?php echo $homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
-									</a>
-								</div>
-							<?php endif; ?>
+											<img class="logo-scroll" src="<?php echo $homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
+											<img class="logo-mobile" src="<?php echo $homo_logo; ?>" alt="<?php echo get_bloginfo(); ?>" >
+										</a>
+									</div>
+								<?php endif; ?>
 								<!-- logo close -->
 							</div>
 							<div class="de-flex-col header-col-mid">
-								<ul id="mainmenu">
-									<li><a class="menu-item" href="index.html">Home</a></li>
-									<li><a class="menu-item" href="about.html">About us</a></li>
-									<li><a class="menu-item" href="#">Room</a>
-										<ul>
-											<li><a href="room-detail.html">Micro Apartment</a></li>
-											<li><a href="room-detail.html">Suite room</a></li>
-											<li><a href="room-detail.html">Deluxe room</a></li>
-											<li><a href="room-detail.html">Standard room  </a></li>
-										</ul>
-									</li>
-									<li><a class="menu-item" href="news.html">Café</a>
-										<ul>
-											<li><a href="cafe.html">Himcha Cafe</a></li>
-											<li><a href="">Food Menu</a></li>
-										</ul>
-									</li>
+								<?php
+								$menu_args = array(
+									'theme_location'  => 'menu-1',  
+									'menu_id'      => 'mainmenu',  
+									'container'       => false,
+                               		 'depth'           => 2,  //1 means no dropdown
+                               		 'walker'          => new Homotel_Walker_Nav_Menu(),
+                            );
 
-									<li><a class="menu-item" href="services.html">Services</a></li>
-									<li><a class="menu-item" href="testimonials.html">Testimonials</a></li>
-									<li><a class="menu-item" href="news.html">Blog</a></li>
-									<li><a class="menu-item" href="contact.html">Contact</a></li>
-								</ul>
+								wp_nav_menu($menu_args);
+								?>
 							</div>
 							<?php if( $res_link = get_field('se_inquire_button','options') ): ?>
-							<div class="de-flex-col">
-								<div class="menu_side_area">          
-									<a href="<?php echo $res_link['url']; ?>" class="btn-main btn-line"><?php echo $res_link['title']; ?></a>
-									<span id="menu-btn"></span>
+								<div class="de-flex-col">
+									<div class="menu_side_area">          
+										<a href="<?php echo $res_link['url']; ?>" class="btn-main btn-line"><?php echo $res_link['title']; ?></a>
+										<span id="menu-btn"></span>
+									</div>
 								</div>
-							</div>
-						<?php endif; ?>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>

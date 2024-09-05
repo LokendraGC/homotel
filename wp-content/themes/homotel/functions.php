@@ -16,6 +16,7 @@
 		'inc/breadcrumb.php',
 		'inc/helper.php',
 		'inc/breadcrumb.php',
+		'inc/ajax-functions.php'
 	);
 
 /**

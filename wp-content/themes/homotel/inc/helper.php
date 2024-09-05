@@ -18,3 +18,6 @@ add_filter('nav_menu_item_id', 'filter_menu_id');
 function filter_menu_id(){
     return; 
 }
+
+// Contact Form 7: Disable automatic paragraph tags
+add_filter('wpcf7_autop_or_not', '__return_false');
