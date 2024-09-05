@@ -3,8 +3,8 @@
  * Enqueue scripts and styles.
  */
 function homotel_scripts() {
-	wp_enqueue_style( 'homotel-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'homotel-style', 'rtl', 'replace' );
+	// wp_enqueue_style( 'homotel-style', get_stylesheet_uri(), array(), _S_VERSION );
+	// wp_style_add_data( 'homotel-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'homotel-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 

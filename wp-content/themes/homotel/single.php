@@ -8,7 +8,18 @@
  */
 
 get_header();
-?>
+
+	$banner_img = get_field('banner_image');
+
+	if( $banner_img ){
+		$banner = $banner_img['url'];
+	}else{
+		$banner = get_template_directory_uri() ."/assets/images/background/3.webp";
+	}
+
+	?>
+
+
 
 <!-- content begin -->
 <div class="no-bottom no-top" id="content">
@@ -16,11 +27,11 @@ get_header();
 	<div id="top"></div>
 
 	<section id="subheader" class="relative jarallax text-light">
-		<img src="<?php echo get_template_directory_uri(); ?>/assets/images/background/1.webp" class="jarallax-img" alt="">
+		<img src="<?php echo $banner; ?>" class="jarallax-img" alt="Homotel Banner Image">
 		<div class="container relative z-index-1000">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h2 class="mt-3 mb-3"><?php the_title(); ?></h2>
+					<h1 class="mt-3 mb-3 border-0 h2"><?php the_title(); ?></h1>
 					<?php echo get_the_date(''); ?>
 				</div>
 			</div>
@@ -60,7 +71,7 @@ get_header();
 					?>
 					<div class="col-lg-4">
 						<div class="widget widget-post">
-							<h4>Recent Posts</h4>
+							<h2 class="h4">Recent Posts</h2>
 							<ul class="de-bloglist-type-1">
 								<?php
 								foreach( $blogs_data as $post ):
