@@ -1,6 +1,6 @@
 <?php 
 
-class Raithaane_Walker_Nav_Menu extends Walker {
+class Homotel_Walker_Nav_Menu extends Walker {
 	/**
 	 * What the class handles.
 	 *
@@ -136,12 +136,7 @@ class Raithaane_Walker_Nav_Menu extends Walker {
 
 		$classes   = empty( $menu_item->classes ) ? array() : (array) $menu_item->classes;
 		$classes[] = 'menu-item-' . $menu_item->ID;
-		$classes = [];   //classes for li
-		
-		if($this->has_children)
-		{
-			$classes[] = 'menu-item-has-children';
-		}
+
 		/**
 		 * Filters the arguments for a single nav menu item.
 		 *

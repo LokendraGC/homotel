@@ -4,6 +4,12 @@ get_header();
 ?>
 
 <!-- content begin -->
+
+<style type="text/css">
+input[type="text"], input[type="email"],  textarea {
+			background: none !important;
+	}
+</style>
 <div class="no-bottom no-top" id="content">
 
 	<?php get_template_part('template-parts/common/banner-detail-section'); ?>
@@ -80,45 +86,7 @@ get_header();
 							<h3 class="mb-4 ">Write a Message</h3>
 						</div>
 
-						<form name="contactForm" id="contact_form" class="position-relative z1000" method="post" action="#">
-							<div class="row gx-4">
-								<div class="col-lg-12 col-md-12 mb10">
-									<div class="field-set">
-										<input type="text" name="Name" id="name" class="form-control" placeholder="Your Name" required>
-									</div>
-
-									<div class="field-set">
-										<input type="text" name="Email" id="email" class="form-control" placeholder="Your Email" required>
-									</div>
-
-									<div class="field-set">
-										<input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone" required>
-									</div>
-								</div>
-
-								<div class="col-lg-12 col-md-12">
-									<div class="field-set mb20">
-										<textarea name="message" id="message" class="form-control" placeholder="Your Message" required></textarea>
-									</div>
-								</div>
-							</div>
-
-
-							<div class="text-center">
-								<div class="g-recaptcha d-inline-block " data-sitekey="copy-your-sitekey-here"></div>
-
-								<div id='submit' class="mt20 text-cen">
-									<input type='submit' id='send_message' value='Send Message' class="btn-main">
-								</div>
-							</div>
-
-							<div id="success_message" class='success'>
-								Your message has been sent successfully. Refresh this page if you want to send more messages.
-							</div>
-							<div id="error_message" class='error'>
-								Sorry there was an error sending your form.
-							</div>
-						</form>
+						<?php echo do_shortcode('[contact-form-7 id="8c0f17d" title="Contact Form", html_id = "contact_form", html_class = "position-relative z1000"]'); ?>
 
 					</div>
 				</div>
@@ -127,10 +95,10 @@ get_header();
 	</section>  
 
 	<?php if( $map_url = get_field('wtn_map_iframe_url','options') ): ?>
-	<section class="p-0">   
-		<?php echo $map_url; ?>
-	</section>            
-<?php endif; ?>
+		<section class="p-0">   
+			<?php echo $map_url; ?>
+		</section>            
+	<?php endif; ?>
 </div>
 <!-- content close -->
 

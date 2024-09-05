@@ -17,7 +17,7 @@ get_template_part('template-parts/common/banner-section');
 						<div class="col-lg-8 offset-lg-2">
 							<p>We will contact you shortly. Refresh this page if you want to make another reservation.</p>
 
-							<img src="images/misc/2.webp" class="w-100 rounded-up-100" alt="">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/images/misc/2.webp" class="w-100 rounded-up-100" alt="">
 						</div>
 					</div>
 
@@ -70,16 +70,16 @@ get_template_part('template-parts/common/banner-section');
 								<h4>Select Room</h4>
 
 								<select name="Room Type" class="room-type form-control">
-									<option value='Standart Room' data-src="images/form/1.jpg">
+									<option value='Standart Room' data-src="<?php echo get_template_directory_uri(); ?>/assets/images/form/1.jpg">
 										Micro Apartment | $119/night | 2 Guests
 									</option>
-									<option value='Deluxe Room' data-src="images/form/2.jpg">
+									<option value='Deluxe Room' data-src="<?php echo get_template_directory_uri(); ?>/assets/images/form/2.jpg">
 										Deluxe Room | $129/night | 2 Guests
 									</option>
-									<option value='Premier Room' data-src="images/form/3.jpg">
+									<option value='Premier Room' data-src="<?php echo get_template_directory_uri(); ?>/assets/images/form/3.jpg">
 										Standard Room | $139/night | 2 Guests
 									</option>
-									<option value='Family Suite' data-src="images/form/4.jpg">
+									<option value='Family Suite' data-src="<?php echo get_template_directory_uri(); ?>/assets/images/form/4.jpg">
 										Suite Room | $149/night | 4 Guests
 									</option>
 									
